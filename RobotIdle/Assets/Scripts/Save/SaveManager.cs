@@ -34,12 +34,10 @@ public class SaveManager : MonoBehaviour
 
     public void Save()
     {
-        SaveData data = new SaveData
-        {
-            resources = ResourceManager.Instance.GetAllResources(),
-            partLevels = RobotManager.Instance.GetPartLevels(),
-            quitTime = DateTime.UtcNow.ToString("o")
-        };
+        SaveData data = new SaveData();
+        data.FromResourceDictionary(ResourceManager.Instance.GetAllResources());
+        data.partLevels = RobotManager.Instance.GetPartLevels();
+        data.quitTime = DateTime.UtcNow.ToString("o");
 
         PlayerPrefs.SetString(SAVE_KEY, JsonUtility.ToJson(data));
         PlayerPrefs.SetString(QUIT_TIME_KEY, data.quitTime);
@@ -53,7 +51,7 @@ public class SaveManager : MonoBehaviour
         string json = PlayerPrefs.GetString(SAVE_KEY);
         SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-        ResourceManager.Instance.LoadResources(data.resources);
+        ResourceManager.Instance.LoadResources(data.ToResourceDictionary());
         RobotManager.Instance.LoadPartLevels(data.partLevels);
     }
 
@@ -76,7 +74,28 @@ public class SaveManager : MonoBehaviour
 [Serializable]
 public class SaveData
 {
-    public Dictionary<ResourceType, double> resources;
+    // JsonUtility는 Dictionary를 지원 안 해서 병렬 리스트로 저장
+    public List<int> resourceKeys = new();
+    public List<double> resourceValues = new();
     public int[] partLevels;
     public string quitTime;
+
+    public void FromResourceDictionary(Dictionary<ResourceType, double> dict)
+    {
+        resourceKeys.Clear();
+        resourceValues.Clear();
+        foreach (var pair in dict)
+        {
+            resourceKeys.Add((int)pair.Key);
+            resourceValues.Add(pair.Value);
+        }
+    }
+
+    public Dictionary<ResourceType, double> ToResourceDictionary()
+    {
+        var dict = new Dictionary<ResourceType, double>();
+        for (int i = 0; i < resourceKeys.Count; i++)
+            dict[(ResourceType)resourceKeys[i]] = resourceValues[i];
+        return dict;
+    }
 }
