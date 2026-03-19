@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b629577f7c53b459df9eef6d8a01d0, type: 3}
   m_Name: WorkerData
   m_EditorClassIdentifier: Assembly-CSharp::WorkerData
-  workerName: Common Worker
+  workerName: Common_Worker
   sprite: {fileID: 0}
   workerType: 0
   baseCollectAmount: 1
