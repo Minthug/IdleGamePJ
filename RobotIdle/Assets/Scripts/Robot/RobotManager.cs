@@ -33,7 +33,7 @@ public class RobotManager : MonoBehaviour
 
         if (currentLevel >= data.maxLevel) return false;
 
-        ResourceCost[] cost = data.upgradeCosts[currentLevel];
+        ResourceCost[] cost = data.upgradeCosts[currentLevel].costs;
         return ResourceManager.Instance.CanAfford(cost);
     }
 
@@ -45,7 +45,7 @@ public class RobotManager : MonoBehaviour
 
         if (!CanUpgrade(type)) return false;
 
-        ResourceManager.Instance.Spend(data.upgradeCosts[currentLevel]);
+        ResourceManager.Instance.Spend(data.upgradeCosts[currentLevel].costs);
 
         partLevels[index]++;
 
