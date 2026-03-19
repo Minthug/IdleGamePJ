@@ -1,0 +1,23 @@
+# Unity 생성 폴더
+RobotIdle/Library/
+RobotIdle/Temp/
+RobotIdle/Logs/
+RobotIdle/UserSettings/
+RobotIdle/obj/
+RobotIdle/Build/
+RobotIdle/Builds/
+
+# Visual Studio / Rider 프로젝트 파일
+RobotIdle/*.csproj
+RobotIdle/*.slnx
+RobotIdle/*.sln
+RobotIdle/.vscode/
+RobotIdle/.vs/
+RobotIdle/.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 에셋 메타 파일은 추적 (Unity 필수)
+# *.meta 파일은 ignore 하지 않음
