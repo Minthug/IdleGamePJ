@@ -1,19 +1,19 @@
-# Unity 생성 폴더
-RobotIdle/Library/
-RobotIdle/Temp/
-RobotIdle/Logs/
-RobotIdle/UserSettings/
-RobotIdle/obj/
-RobotIdle/Build/
-RobotIdle/Builds/
+# Unity 자동생성 폴더 (올리면 안 됨)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
 
-# Visual Studio / Rider 프로젝트 파일
-RobotIdle/*.csproj
-RobotIdle/*.slnx
-RobotIdle/*.sln
-RobotIdle/.vscode/
-RobotIdle/.vs/
-RobotIdle/.idea/
+# Visual Studio / Rider
+.vs/
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.slnx
 
 # OS
 .DS_Store
